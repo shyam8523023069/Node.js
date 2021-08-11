@@ -43,16 +43,38 @@
 // console.log(data.toString())
 // console.log('Hello this is an synchronous Programming....')
 
-const fs = require ('fs')
-const fileName = 'file.txt';
-const errHandler = err => console.log(err);
-const dataHandler = data => console.log(data.toString())
-fs.readFile(fileName, (err, data) => {
-    if(err){
-        errHandler(err)
-    }
-    dataHandler(data)
+// const fs = require ('fs')
+// const fileName = 'file.txt';
+// const errHandler = err => console.log(err);
+// const dataHandler = data => console.log(data.toString())
+// fs.readFile(fileName, (err, data) => {
+//     if(err){
+//         errHandler(err)
+//     }
+//     dataHandler(data)
 
-} )
+// } )
 
-console.log('nOde js functional approach')
+// console.log('nOde js functional approach')
+
+//routes--------------------parth--------------------
+// const express = require('express');
+// const app = express();
+// // const routerPost = require('./routes/post');
+// const {getPost} = require("./routes/post")
+
+// // app.get("/", routerPost.getPost )
+// app.get("/", getPost)
+// app.listen(8080)
+
+
+//middleware--------------------------------
+
+const express = require('express');
+const app = express()
+const {getPost} = require('./routes/post')
+const middle =require('morgan')
+
+app.use(middle("dev"));
+app.get('/', getPost)
+app.listen(8080)
